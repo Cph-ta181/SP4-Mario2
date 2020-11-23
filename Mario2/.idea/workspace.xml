@@ -34,6 +34,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -75,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606135580684</updated>
-      <workItem from="1606135582904" duration="3312000" />
+      <workItem from="1606135582904" duration="5887000" />
     </task>
     <servers />
   </component>
@@ -83,26 +84,30 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="927" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606142319477">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="927" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606142319477" />
     <state x="1041" y="459" key="FileChooserDialogImpl" timestamp="1606136168873">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1041" y="459" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1606136168873" />
-    <state width="2094" height="297" key="GridCell.Tab.0.bottom" timestamp="1606139582301">
+    <state width="2094" height="297" key="GridCell.Tab.0.bottom" timestamp="1606142308101">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2094" height="297" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606139582301" />
-    <state width="2094" height="297" key="GridCell.Tab.0.center" timestamp="1606139582301">
+    <state width="2094" height="297" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606142308101" />
+    <state width="2094" height="297" key="GridCell.Tab.0.center" timestamp="1606142308101">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2094" height="297" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606139582301" />
-    <state width="2094" height="297" key="GridCell.Tab.0.left" timestamp="1606139582300">
+    <state width="2094" height="297" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606142308101" />
+    <state width="2094" height="297" key="GridCell.Tab.0.left" timestamp="1606142308101">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2094" height="297" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606139582300" />
-    <state width="2094" height="297" key="GridCell.Tab.0.right" timestamp="1606139582301">
+    <state width="2094" height="297" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606142308101" />
+    <state width="2094" height="297" key="GridCell.Tab.0.right" timestamp="1606142308101">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2094" height="297" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606139582301" />
+    <state width="2094" height="297" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606142308101" />
     <state x="815" y="292" key="SettingsEditor" timestamp="1606138170936">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

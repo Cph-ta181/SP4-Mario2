@@ -14,9 +14,12 @@ public class PizzaShop {
 
         try{
             con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaShop", "root","root123");
-            PreparedStatement preSta = con.prepareStatement("SELECT COUNT(*) FROM activeOrder;");
-            ResultSet res = preSta.executeQuery();
-            System.out.println(res);
+            Statement preSta = con.createStatement();
+            ResultSet res = preSta.executeQuery("Select * from activeOrder;");
+            if (res.next()){
+                System.out.println(res.getString(1));
+            }
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
