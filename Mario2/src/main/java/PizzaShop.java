@@ -17,7 +17,11 @@ public class PizzaShop {
             Statement preSta = con.createStatement();
             ResultSet res = preSta.executeQuery("Select * from activeOrder;");
             if (res.next()){
-                System.out.println(res.getString(1));
+                String[] pizzasStringArr  = res.getString(3).split(",");
+                int[] pizzas = new int[pizzasStringArr.length];
+                for (int i = 0; i<pizzasStringArr.length;i++){
+                    pizzas[i] = Integer.parseInt(pizzasStringArr[i]);
+                }
             }
 
 
