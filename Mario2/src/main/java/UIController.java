@@ -2,7 +2,7 @@ import java.util.*;
 
 public class UIController {
     Scanner sc = new Scanner(System.in);
-    Menu menu = new Menu();
+    Menu menu = new Menu("jdbc:mysql://localhost/pizzaShop");
     PizzaShop MariosPizzaBar = new PizzaShop(menu);
 
 
