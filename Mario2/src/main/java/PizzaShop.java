@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class PizzaShop {
@@ -54,6 +55,31 @@ public class PizzaShop {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public void addToActive(Order order){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSS");
+        String date = format.format(order.getDatetime().getTime());
+        String pizzaList = "";
+        for(Pizza pizza : order.getPizzas()){
+            pizzaList += "@" + pizza.getNumber();
+        }
+        String SQL = "insert into activeOrder (orderNumber, deliveryDate, pizzas) values (" +
+                0 + ", '" +
+                date + "', '" +
+                pizzaList + "');";
+
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaShop", "root", "root123");
+            Statement preSta = con.createStatement();
+            preSta.execute(SQL);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
     }
 
 
