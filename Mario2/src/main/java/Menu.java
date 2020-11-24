@@ -5,19 +5,8 @@ import java.util.List;
 public class Menu {
     private ArrayList<Pizza> pizzas;
 
-    public Menu(String url) {
-        Connection con = null;
-        try {
-            con = DriverManager.getConnection(url, "root", "root123");
-            Statement preSta = con.createStatement();
-            ResultSet res = preSta.executeQuery("Select * from pizza order by pizzaNumber;");
-            if (res.next()) {
-                Pizza pizzaToAdd = new Pizza(res.getInt(1), res.getInt(3), res.getString(2));
-                pizzas.add(pizzaToAdd);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    public Menu(String url, String user, String pass) {
+        readPizzasFromDB(url, user, pass);
     }
 
     public ArrayList<Pizza> getPizzas() {
@@ -30,6 +19,23 @@ public class Menu {
 
     public void removePizza(Pizza pizzaToRemove) {
         pizzas.remove(pizzaToRemove);
+    }
+
+    private ArrayList<Pizza> readPizzasFromDB(String url, String user, String pass){
+        pizzas = new ArrayList<Pizza>();
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection(url, user, pass);
+            Statement preSta = con.createStatement();
+            ResultSet res = preSta.executeQuery("Select * from pizza order by pizzaNumber;");
+            while (res.next()) {
+                Pizza pizzaToAdd = new Pizza(res.getInt(1), res.getInt(3), res.getString(2));
+                pizzas.add(pizzaToAdd);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return pizzas;
     }
 
     @Override
