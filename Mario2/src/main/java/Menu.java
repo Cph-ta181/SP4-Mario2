@@ -28,7 +28,7 @@ public class Menu {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaShop", "root", "root123");
             Statement preSta = con.createStatement();
-            ResultSet res = preSta.executeQuery("jdbc:mysql://localhost/pizzaShop");
+            ResultSet res = preSta.executeQuery("Select * from pizza order by pizzaNumber;");
             while (res.next()) {
                 Pizza pizzaToAdd = new Pizza(res.getInt(1), res.getInt(3), res.getString(2));
                 pizzas.add(pizzaToAdd);
