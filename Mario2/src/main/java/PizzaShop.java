@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PizzaShop {
     private Menu menu;
@@ -78,8 +79,33 @@ public class PizzaShop {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
 
+    public void calculateThisMonthEarnings(){
+        String date = "'"+
+                Calendar.getInstance().get(Calendar.YEAR) + "-" +
+                Calendar.getInstance().get(Calendar.MONTH) +
+                "-00 00:00:00.0000'";
 
+        String SQL = "select * from completedOrder where deliveryDate > " + date + ";";
+
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaShop", "root", "root123");
+            Statement preSta = con.createStatement();
+            ResultSet res = preSta.executeQuery(SQL);
+            while(res.next()){
+                String[] pizzasString = res.getString(3).split("@");
+                int[] pizzas = new int[pizzasString.length];
+                for (int i = 0; i < pizzasString.length; i++){
+                    pizzas[i] = Integer.parseInt(pizzasString[i]);
+                }
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 
