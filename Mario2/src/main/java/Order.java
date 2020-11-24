@@ -1,11 +1,8 @@
-public class Order {
-    
-    import java.io.Serializable;
+import java.io.Serializable;
 import java.util.List;
 import java.util.GregorianCalendar;
 
-
-    public class Order implements Serializable {
+    public class Order{
 
         private  List<Pizza> pizzas;
         private  GregorianCalendar datetime;
@@ -66,4 +63,3 @@ import java.util.GregorianCalendar;
             return tempString;
         }
     }
-}

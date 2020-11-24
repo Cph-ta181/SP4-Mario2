@@ -2,30 +2,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuKort {
+public class Menu {
     private ArrayList<Pizza> pizzas;
 
-    public Menu(String filename) {
-        pizzas = new ArrayList<Pizza>();
-        File file = new File(filename);
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line = "";
-            int counter = 1;
-            Pizza pizza;
-            while((line = br.readLine()) != null) {
-                String[] lineArr = line.split(",");
-                pizza = new Pizza (lineArr[2], Integer.parseInt(lineArr[0]), Integer.parseInt(lineArr[1]));
-                pizzas.add(pizza);
-                counter++;
-            }
+    public Menu() {
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
     public List<Pizza> getPizzas() {
