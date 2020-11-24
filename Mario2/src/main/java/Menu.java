@@ -5,8 +5,9 @@ import java.util.List;
 public class Menu {
     private ArrayList<Pizza> pizzas;
 
-    public Menu(String url, String user, String pass) {
-        readPizzasFromDB(url, user, pass);
+
+    public Menu() {
+        readPizzasFromDB();
     }
 
     public ArrayList<Pizza> getPizzas() {
@@ -21,13 +22,13 @@ public class Menu {
         pizzas.remove(pizzaToRemove);
     }
 
-    private ArrayList<Pizza> readPizzasFromDB(String url, String user, String pass){
+    private ArrayList<Pizza> readPizzasFromDB(){
         pizzas = new ArrayList<Pizza>();
         Connection con = null;
         try {
-            con = DriverManager.getConnection(url, user, pass);
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaShop", "root", "root123");
             Statement preSta = con.createStatement();
-            ResultSet res = preSta.executeQuery("Select * from pizza order by pizzaNumber;");
+            ResultSet res = preSta.executeQuery("jdbc:mysql://localhost/pizzaShop");
             while (res.next()) {
                 Pizza pizzaToAdd = new Pizza(res.getInt(1), res.getInt(3), res.getString(2));
                 pizzas.add(pizzaToAdd);

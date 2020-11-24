@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args){
-        Menu menu = new Menu("jdbc:mysql://localhost/pizzaShop", "root", "root123");
+        Menu menu = new Menu();
         System.out.println(menu);
 
 
