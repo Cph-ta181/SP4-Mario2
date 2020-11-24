@@ -1,4 +1,4 @@
-import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,10 +6,21 @@ public class Menu {
     private ArrayList<Pizza> pizzas;
 
     public Menu() {
-
-
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaShop", "root", "root123");
+            Statement preSta = con.createStatement();
+            ResultSet res = preSta.executeQuery("Select * from pizza;");
+            if (res.next()) {
+                Pizza pizzaToAdd = new Pizza(res.getInt(1), res.getInt(3), res.getString(2));
+                pizzas.add(pizzaToAdd);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
-    public List<Pizza> getPizzas() {
+
+    public ArrayList<Pizza> getPizzas() {
         return pizzas;
     }
 

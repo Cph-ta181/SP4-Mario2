@@ -2,8 +2,8 @@ import java.util.*;
 
 public class UIController {
     Scanner sc = new Scanner(System.in);
-    MenuKort menu = new MenuKort("./resources/pizzaer.txt");
-    PizzaBar MariosPizzaBar = new PizzaBar(menu);
+    Menu menu = new Menu();
+    PizzaShop MariosPizzaBar = new PizzaShop(menu);
 
 
     public void runApp() {
@@ -26,13 +26,13 @@ public class UIController {
                     removeBestillingMenu();
                     break;
                 case 3:
-                    System.out.println(MariosPizzaBar.calculateThisMonthEarnings());
+                    //System.out.println(MariosPizzaBar.calculateThisMonthEarnings());
                     break;
                 case 4:
                     udskrivBestillinger();
                     break;
                 case 5:
-                    MariosPizzaBar.printMostBoughtPizzas();
+                    //MariosPizzaBar.printMostBoughtPizzas();
                     break;
                 case 9:
                     running = false;
@@ -45,33 +45,33 @@ public class UIController {
     }
 
     private void removeBestillingMenu() {
-        for (Bestilling bestilling : MariosPizzaBar.getBestillinger()) {
-            System.out.println("" + MariosPizzaBar.getBestillinger().indexOf(bestilling) + bestilling);
+        for (Order order : MariosPizzaBar.getOrders()) {
+            System.out.println("" + MariosPizzaBar.getOrders().indexOf(order) + order);
         }
         System.out.println("Indtast nummeret på den bestilling du vil have fjernet.");
-        MariosPizzaBar.removeBestilling(MariosPizzaBar.getBestillinger().get(sc.nextInt()));
+        //MariosPizzaBar.removeOrder(MariosPizzaBar.getOrders().get(sc.nextInt()));
     }
 
     private void addBestillingMenu() {
-        System.out.println(MariosPizzaBar.getMenu());
+        //System.out.println(MariosPizzaBar.getMenu());
         System.out.println("Indtast den måned du vil have pizzaen i.");
         int month = sc.nextInt();
         System.out.println("Indtast den dag du vil have pizzaen i.");
         int day = sc.nextInt();
 
-        ArrayList<Pizza> pizzaer = new ArrayList<>();
+        ArrayList<Pizza> pizzaer = new ArrayList<Pizza>();
         int pizzaIndex = sc.nextInt();
-        while (pizzaIndex <= MariosPizzaBar.getMenu().getPizzas().size()) {
+        /*while (pizzaIndex <= MariosPizzaBar.getMenu().getPizzas().size()) {
             pizzaer.add(MariosPizzaBar.getMenu().getPizzas().get(pizzaIndex));
             pizzaIndex = sc.nextInt();
-        }
-        Bestilling tempBestilling = new Bestilling(pizzaer, new GregorianCalendar(Calendar.YEAR, month, day), false);
-        MariosPizzaBar.addBestilling(tempBestilling);
+        }*/
+        Order tempOrder = new Order(pizzaer, new GregorianCalendar(Calendar.YEAR, month, day), false);
+        //MariosPizzaBar.addOrder(tempOrder);
     }
 
     private void udskrivBestillinger() {
-        for (Bestilling bestilling : MariosPizzaBar.getBestillinger()) {
-            System.out.println(bestilling);
+        for (Order order : MariosPizzaBar.getOrders()) {
+            System.out.println(order);
         }
 
     }
