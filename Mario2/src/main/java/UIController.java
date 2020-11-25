@@ -26,13 +26,13 @@ public class UIController {
                     removeBestillingMenu();
                     break;
                 case 3:
-                    //System.out.println(MariosPizzaBar.calculateThisMonthEarnings());
+                    System.out.println(MariosPizzaBar.calculateThisMonthEarnings());
                     break;
                 case 4:
                     udskrivBestillinger();
                     break;
                 case 5:
-                    //MariosPizzaBar.printMostBoughtPizzas();
+                    MariosPizzaBar.printMostBoughtPizzas();
                     break;
                 case 9:
                     running = false;
@@ -49,11 +49,11 @@ public class UIController {
             System.out.println("" + MariosPizzaBar.getOrders().indexOf(order) + order);
         }
         System.out.println("Indtast nummeret på den bestilling du vil have fjernet.");
-        //MariosPizzaBar.removeOrder(MariosPizzaBar.getOrders().get(sc.nextInt()));
+        MariosPizzaBar.moveActiveToCompleted(sc.nextInt());
     }
 
     private void addBestillingMenu() {
-        //System.out.println(MariosPizzaBar.getMenu());
+        System.out.println(MariosPizzaBar.getMenu());
         System.out.println("Indtast den måned du vil have pizzaen i.");
         int month = sc.nextInt();
         System.out.println("Indtast den dag du vil have pizzaen i.");
@@ -61,12 +61,12 @@ public class UIController {
 
         ArrayList<Pizza> pizzaer = new ArrayList<Pizza>();
         int pizzaIndex = sc.nextInt();
-        /*while (pizzaIndex <= MariosPizzaBar.getMenu().getPizzas().size()) {
+        while (pizzaIndex <= MariosPizzaBar.getMenu().getPizzas().size()) {
             pizzaer.add(MariosPizzaBar.getMenu().getPizzas().get(pizzaIndex));
             pizzaIndex = sc.nextInt();
-        }*/
+        }
         Order tempOrder = new Order(pizzaer, new GregorianCalendar(Calendar.YEAR, month, day), false);
-        //MariosPizzaBar.addOrder(tempOrder);
+        MariosPizzaBar.addToActive(tempOrder);
     }
 
     private void udskrivBestillinger() {
