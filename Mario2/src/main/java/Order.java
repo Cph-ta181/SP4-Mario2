@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.GregorianCalendar;
 
@@ -48,17 +49,18 @@ import java.util.GregorianCalendar;
 
         @Override
         public String toString() {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSS");
             String tempString = "Order";
             for (Pizza pizza: pizzas){
                 tempString += "\n"+ pizza.getNumber();
             }
             tempString += "\nPris: "+totalPrice();
-            tempString += "\nDato: "+datetime;
+            tempString += "\nDato: "+format.format(datetime.getTime());
             if (paid){
-                tempString += "Er betalt";
+                tempString += "\nEr betalt";
             }
             else{
-                tempString += "Er ikke betalt\n";
+                tempString += "\nEr ikke betalt";
             }
             return tempString;
         }

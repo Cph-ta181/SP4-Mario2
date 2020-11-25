@@ -1,9 +1,6 @@
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
+import java.util.*;
 
 public class PizzaShop {
     private Menu menu;
@@ -13,6 +10,8 @@ public class PizzaShop {
     }
 
     public ArrayList<Order> getOrders(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSS");
+
         ArrayList<Order> orderArr = new ArrayList<Order>();
         Connection con = null;
 
@@ -21,11 +20,18 @@ public class PizzaShop {
             Statement preSta = con.createStatement();
             ResultSet res = preSta.executeQuery("Select * from activeOrder;");
             while (res.next()){
-                String[] pizzasStringArr  = res.getString(3).split(",");
-                int[] pizzas = new int[pizzasStringArr.length];
-                for (int i = 0; i<pizzasStringArr.length;i++){
-                    pizzas[i] = Integer.parseInt(pizzasStringArr[i]);
+                String[] pizzasStringArr  = res.getString(3).split("@");
+                ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
+                for (int i = 1; i<pizzasStringArr.length;i++){
+                    for (Pizza pizza : menu.getPizzas()){
+                        if (Integer.parseInt(pizzasStringArr[i]) == pizza.getNumber()){
+                            pizzas.add(pizza);
+                        }
+                    }
                 }
+                GregorianCalendar date = new GregorianCalendar();
+                date.setTime(res.getDate(2));
+                orderArr.add(new Order(pizzas, date, false));
             }
 
         } catch (SQLException throwables) {
@@ -116,7 +122,7 @@ public class PizzaShop {
                 Calendar.getInstance().get(Calendar.MONTH) +
                 "-00 00:00:00.0000'";
 
-        String SQL = "select * from completedOrder where deliveryDate > " + date+1 + ";";
+        String SQL = "select * from completedOrder where deliveryDate > " + date + ";";
 
         Connection con = null;
         try {
